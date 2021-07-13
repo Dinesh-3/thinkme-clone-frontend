@@ -2,8 +2,8 @@ import React from 'react';
 import gratitude from '../../Images/gratitude.png';
 import man from '../../Images/man_avatar.png';
 import woman from '../../Images/woman_avatar.png';
-import './home.css';
-function Home() {
+import done from "../../Images/done.png";
+function Creation() {
 	return (
 		<div style={{ background: '100% #F4FFF5' }}>
 			<div className='container-fluid pt-4 ml-5'>
@@ -69,41 +69,32 @@ function Home() {
 						}}
 					>
 						<form>
-							<div className='form-group' style={{ paddingTop: '50px' }}>
-								<p style={{ fontWeight: '600', fontSize: '18px' }}>
-									Create a page for anyone in seconds and share it with your friends!
-								</p>
-								<label for='exampleInputEmail1' style={{ fontSize: '15px' }}>
-									Creating Page for
-								</label>
-								<input
-									type='email'
-									class='form-control'
-									id='exampleInputEmail1'
-									aria-describedby='emailHelp'
-									style={{ borderRadius: '10px' }}
-								/>
+							<div className='form-group' style={{ paddingTop: '30px' }}>
+								<img class="center" style={{display:"block",marginLeft:"auto",marginRight:"auto"}} src={done} />
+
+                                <p className="col-12 " style={{textAlign:"center"}}>Amazing! You just created a kindness page.</p>
+                                <p className="col-12" style={{textAlign:"center"}}>Now go ahead and share it with your friends on Instagram, Facebook and literally everywhere!</p>
+                                <div className="thanklink" style={{
+						            border: '1px solid #F0F4FB',
+						            borderRadius: '30px',
+						            width: '150px',
+						            padding: '6px',
+                                    paddingLeft:"25px",
+                                    marginLeft:"50px",
+                                    backgroundColor:"#F0F4FB",
+                                    width:"200px"
+                                    
+                                }}>
+                                <a href="#" style={{ textDecoration: 'none', paddingLeft: '20px'}}>thankme.in?</a></div>
 							</div>
-							<div class='form-group'>
-								<label for='exampleInputPassword1' style={{ fontSize: '15px' }}>
-									Pagename (Keep it unique)
-								</label>
-								<input
-									type='password'
-									class='form-control'
-									id='exampleInputPassword1'
-									style={{ borderRadius: '10px' }}
-								/>
+                            <div style={{ paddingBottom: '50px',paddingLeft:"80px"}}>
+                                <a href="#" style={{textDecoration:"none"}}><span class="material-icons" style={{color:"#0057DA"}}>
+                                content_copy
+                            </span>COPY LINK</a>
+                            
 							</div>
-							<div style={{ paddingBottom: '50px' }}>
-								<button
-									type='submit'
-									class='btn btn-primary'
-									style={{ padding: '5px 93px', borderRadius: '10px' }}
-								>
-									CREATE PAGE
-								</button>
-							</div>
+							
+							
 						</form>
 					</div>
 					<img
@@ -117,4 +108,4 @@ function Home() {
 	);
 }
 
-export default Home;
+export default Creation;
