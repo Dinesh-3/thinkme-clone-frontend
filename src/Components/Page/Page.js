@@ -2,10 +2,12 @@ import prof from '../../Images/DEFAULTPROFILE.jpeg';
 import thanks from '../../Images/thankyou .png';
 import prof1 from '../../Images/prof1.png';
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { HttpRequest } from '../../utils/HttpRequest';
 
 import './Page.css';
+import NotesContainer from './NotesContainer/NotesContainer';
+import { isValidForm } from '../../utils/IsValidForm';
 
 const Page = () => {
 	const location = useLocation();
@@ -20,7 +22,18 @@ const Page = () => {
 			updated_at: '',
 		},
 	]);
-  const [scrollType, setScrollType] = useState("overflowY-hidden")
+	const [form, setForm] = useState({ content: '' });
+	const [error, setError] = useState({ content: '' });
+
+	const formPattern = useMemo(
+		() => ({
+			content: {
+				pattern: /^[0-9a-zA-Z]{1}/,
+				message: 'Content at least have 1 character',
+			},
+		}),
+		[]
+	);
 
 	useEffect(() => {
 		const pageId = location.pathname.split('/')[2];
@@ -57,6 +70,30 @@ const Page = () => {
 		alert('Link Copied');
 	};
 
+	const handleChange = ({ key, value }) => {
+		setForm((prev) => ({ ...prev, [key]: value }));
+		if (formPattern[key].pattern.test(value)) setError((prev) => ({ ...prev, [key]: false }));
+		else setError((prev) => ({ ...prev, [key]: formPattern[key].message }));
+	};
+
+  const handleAddComment = async (event) => {
+    event.preventDefault();
+		if (!isValidForm(error)) return;
+		const requestObj = {
+			path: `/note`,
+			method: 'POST',
+      body: {
+        page_id: pageDetail.page_id,
+        content: form.content
+      }
+		};
+
+		const response = await HttpRequest(requestObj);
+  
+    if(response.status === true) setNotes(prev => ([...prev, response.data]));
+
+  }
+
 	return (
 		<div className='page-container'>
 			<div className='profile-container'>
@@ -85,15 +122,22 @@ const Page = () => {
 						className='form-control'
 						id='exampleFormControlTextarea1'
 						rows='3'
+						name='content'
+						value={form.content}
+						onChange={(event) =>
+							handleChange({ key: event.target.name, value: event.target.value })
+						}
 						style={{ borderRadius: '15px' }}
 						placeholder='What are you grateful for?'
 					></textarea>
+					{error.content && <p style={{ color: 'red' }}>{error.content}</p>}
 				</div>
 				<div>
 					<button
 						type='submit'
 						className='btn btn-primary'
 						style={{ padding: '0.5rem 1rem', borderRadius: '10px', width: '100%' }}
+            onClick={handleAddComment}
 					>
 						SUBMIT
 					</button>
@@ -130,33 +174,7 @@ const Page = () => {
 					</div>
 				)}
 
-				{notes[0] && (
-					<div className="d-flex flex-column">
-						<p>
-							🎉 {notes.length} people thanked {pageDetail.page_title} for being kind!
-						</p>
-						<div className={`card-container ${scrollType}`}>
-							{notes.map((item) => (
-								<div
-									className='note-card'
-									style={{
-										backgroundColor: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
-									}}
-								>
-									<p>{item.content}</p>
-								</div>
-							))}
-						</div>
-						<button
-							type='button'
-							className='btn btn-light'
-							style={{ borderColor: '#0057DA', color: '#0057DA', margin: "1rem", width: "10rem"}}
-							onClick={() => setScrollType('overflowY-scroll')}
-						>
-							LOAD MORE
-						</button>
-					</div>
-				)}
+				{notes[0] && <NotesContainer notes={notes} pageDetail={pageDetail}/>}
 			</div>
 		</div>
 	);

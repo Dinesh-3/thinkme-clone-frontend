@@ -6,6 +6,7 @@ import gratitude from '../../Images/gratitude.png';
 import man from '../../Images/man_avatar.png';
 import woman from '../../Images/woman_avatar.png';
 import { HttpRequest } from '../../utils/HttpRequest';
+import { isValidForm } from '../../utils/IsValidForm';
 import './home.css';
 
 function Home() {
@@ -38,17 +39,9 @@ function Home() {
 		else setError((prev) => ({ ...prev, [key]: formPattern[key].message }));
 	};
 
-  const isValidForm = () => {
-    const values = Object.values(error);
-    console.log(values);
-    for (const value of values) if(value !== false) return false;
-
-    return true
-  }
-
 	const handleCreatePage = async (event) => {
     event.preventDefault();
-    if (!isValidForm()) return;
+    if (!isValidForm(error)) return;
     const requestObj = {
 			path: `/page/check/${form.pageId}`,
 			method: 'POST'
