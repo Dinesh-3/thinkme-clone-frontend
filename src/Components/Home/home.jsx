@@ -1,7 +1,7 @@
 import React from 'react';
-import gratitude from '../Images/gratitude.png';
-import man from '../Images/man_avatar.png';
-import woman from '../Images/woman_avatar.png';
+import gratitude from '../../Images/gratitude.png';
+import man from '../../Images/man_avatar.png';
+import woman from '../../Images/woman_avatar.png';
 import './home.css';
 function Home() {
 	return (
@@ -16,7 +16,7 @@ function Home() {
 						padding: '12px',
 					}}
 				>
-					<a href='#' style={{ textDecoration: 'none', paddingLeft: '15px', fontWeight: '600' }}>
+					<a href='/' style={{ textDecoration: 'none', paddingLeft: '15px', fontWeight: '600' }}>
 						Thankme.in
 					</a>
 				</div>
@@ -35,7 +35,7 @@ function Home() {
 							We know that a lot of people have helped each other during these hard times. Create a
 							thankme page for yourself/ your friend/colleagues/company and share it in public!{' '}
 						</p>
-						<img src={gratitude} style={{ width: '100%', height: '40%' }} />
+						<img src={gratitude} alt={'Clap'} style={{ width: '100%', height: '40%' }} />
 						<p
 							className='pt-5 pb-4'
 							style={{ color: '#9c9a95', fontWeight: '550', fontSize: '16px' }}
@@ -43,11 +43,12 @@ function Home() {
 							Proudly made in India with <span style={{ color: 'red' }}>♥</span>
 							<br />
 							By Ankit Dubey, Kartik Dhaduk, Harshit Vavaiya <br />
-							<a href='#'>Contact Us</a>
+							<a href='/'>Contact Us</a>
 						</p>
 					</div>
 					<img
 						src={man}
+						alt='man'
 						style={{
 							width: '10%',
 							height: '2%',
@@ -107,6 +108,7 @@ function Home() {
 					</div>
 					<img
 						src={woman}
+						alt='women'
 						style={{ width: '10%', height: '2%', paddingTop: '350px', marginLeft: '-30px' }}
 					/>
 				</div>
