@@ -75,7 +75,7 @@ function Home() {
 
 	return (
 		<div style={{ background: '100% #F4FFF5' }}>
-			<div className='container-fluid pt-5 ml-5'>
+			<div className='container-fluid pt-4 ml-5'>
 				<div
 					className='headertag '
 					style={{
@@ -102,7 +102,7 @@ function Home() {
 						</p>
 						<img src={gratitude} alt={'Clap'} style={{ width: '100%', height: '40%' }} />
 						<p
-							className='pt-5 pb-4'
+							className='pt-4 pb-4'
 							style={{ color: '#9c9a95', fontWeight: '550', fontSize: '16px' }}
 						>
 							Proudly made in India with <span style={{ color: 'red' }}>♥</span>
