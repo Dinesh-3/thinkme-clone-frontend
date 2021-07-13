@@ -4,24 +4,24 @@ import clapImage from '../../Images/claps.png';
 
 const NotFound = () => {
 	return (
-		<div class='container'>
-			<div class='thankme-header-link'>
-				<a href='/' class='header-link'>
+		<div className='container'>
+			<div className='thankme-header-link'>
+				<a href='/' className='header-link'>
 					<h2>Thankme</h2>
 				</a>
 			</div>
-			<div class='status-container'>
-				<p class='status-code'>404</p>
-				<p class='status-message'>Requested page does not exist</p>
+			<div className='status-container'>
+				<p className='status-code'>404</p>
+				<p className='status-message'>Requested page does not exist</p>
 			</div>
-			<div class='create-profile'>
-				<div class='link-container'>
-					<button class='button' onclick="window.location = '/';">
+			<div className='create-profile'>
+				<div className='link-container'>
+					<button className='button' onclick="window.location = '/';">
 						Create your profile now
 					</button>
-					<p class='profile-message'>&#9889; It's FREE</p>
+					<p className='profile-message'>&#9889; It's FREE</p>
 				</div>
-				<div class='img-background'>
+				<div className='img-background'>
 					<img src={clapImage} alt='' srcset='' />
 				</div>
 			</div>
