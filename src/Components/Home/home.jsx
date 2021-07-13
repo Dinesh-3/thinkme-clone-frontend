@@ -62,6 +62,7 @@ function Home() {
 
     const createPageResponse = await HttpRequest(createPage);
     console.log({ createPageResponse });
+    setForm({ pageName: '', pageId: '' });
     if(createPageResponse["status"] === true) return history.push({
 			pathname: '/page',
 			state: {

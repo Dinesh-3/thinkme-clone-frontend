@@ -92,6 +92,8 @@ const Page = () => {
   
     if(response.status === true) setNotes(prev => ([...prev, response.data]));
 
+    setForm({ content: '' });
+
   }
 
 	return (
