@@ -1,9 +1,28 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import gratitude from '../../Images/gratitude.png';
 import man from '../../Images/man_avatar.png';
 import woman from '../../Images/woman_avatar.png';
 import done from "../../Images/done.png";
+import { useHistory, useLocation, Link } from 'react-router-dom';
+
 function Creation() {
+  const location = useLocation();
+  const history = useHistory();
+  const [pageDetail, setPageDetail] = useState({pageId: "", pageName: ""});
+
+  useEffect(() => {
+    console.log(location.state);
+    if(location.state) setPageDetail(location.state);
+    else history.push("/")
+  },[])
+
+  const handleCopyClipboard = async () => {
+    console.log(window.location.href);
+    const url = `${window.location.href}/${pageDetail.pageId}`;
+    await navigator.clipboard.writeText(url);
+    alert("Link Copied")
+  }
+
 	return (
 		<div style={{ background: '100% #F4FFF5' }}>
 			<div className='container-fluid pt-4 ml-5'>
@@ -85,12 +104,16 @@ function Creation() {
                                     width:"200px"
                                     
                                 }}>
-                                <a href="#" style={{ textDecoration: 'none', paddingLeft: '20px'}}>thankme.in?</a></div>
+                                <Link to={`/page/${pageDetail.pageId}`} style={{ textDecoration: 'none', paddingLeft: '20px'}}>
+                                  {`thankme.in/${pageDetail.pageId}`}
+                                </Link>
+                              </div>
 							</div>
-                            <div style={{ paddingBottom: '50px',paddingLeft:"80px"}}>
-                                <a href="#" style={{textDecoration:"none"}}><span class="material-icons" style={{color:"#0057DA"}}>
+                            <div style={{ paddingBottom: '50px',paddingLeft:"80px", cursor: "pointer", color: "blue"}} onClick={() => handleCopyClipboard()}>
+                              <span class="material-icons" style={{color:"#0057DA"}}>
                                 content_copy
-                            </span>COPY LINK</a>
+                              </span>
+                            COPY LINK
                             
 							</div>
 							

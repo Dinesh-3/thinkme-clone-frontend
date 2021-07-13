@@ -12,10 +12,9 @@ function App() {
 			<Router>
 				<Switch>
 					<Route exact path='/' component={Home} />
-					<Route path='/page/:id' component={Page} />
-					<Route path="/Creation" component={Creation}/>
+					<Route exact path='/page' component={Creation} />
+					<Route exact path='/page/:id' component={Page} />
 					<Route component={NotFound} />
-					
 				</Switch>
 			</Router>
 		</div>

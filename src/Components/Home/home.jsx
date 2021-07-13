@@ -69,7 +69,12 @@ function Home() {
 
     const createPageResponse = await HttpRequest(createPage);
     console.log({ createPageResponse });
-    if(createPageResponse["status"] === true) return history.push(`/page/${form.pageId}`);
+    if(createPageResponse["status"] === true) return history.push({
+			pathname: '/creation',
+			state: {
+				...form,
+			},
+		});
     alert("Error Try again!!")
 	};
 
