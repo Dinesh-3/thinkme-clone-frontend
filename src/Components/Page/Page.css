@@ -43,3 +43,10 @@
 .overflowY-hidden {
   overflow-y: hidden;
 }
+
+.thank {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

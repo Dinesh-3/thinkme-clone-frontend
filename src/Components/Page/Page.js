@@ -166,14 +166,13 @@ const Page = () => {
 			</div>
 			<div className='notes-container'>
 				{notes.length === 0 && (
-					<div className='thank' style={{}}>
+					<div className='thank' style={{height: "100vh", width: "100%", margin: "auto"}}>
 						<h5 className='' style={{ color: '#AA9393' }}>
 							Be the first one to thank {pageDetail.page_title}
 						</h5>
 						<img src={thanks} alt='' />
 					</div>
 				)}
-
 				{notes[0] && <NotesContainer notes={notes} pageDetail={pageDetail}/>}
 			</div>
 		</div>
