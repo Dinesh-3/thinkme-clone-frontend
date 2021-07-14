@@ -138,7 +138,7 @@ const Page = () => {
 						SUBMIT
 					</button>
 				</div>
-				<form style={{ backgroundColor: '#F5FCFF', padding: '1rem', marginTop: "5rem" }}>
+				<form style={{ backgroundColor: '#F5FCFF', padding: '1rem', marginTop: "1rem" }}>
 					<div className='own'>
 						<h5 className=''>🎉 Create your own page</h5>
 
