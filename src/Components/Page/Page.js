@@ -82,10 +82,11 @@ const Page = () => {
 		const requestObj = {
 			path: `/note`,
 			method: 'POST',
-      body: {
-        page_id: pageDetail.page_id,
-        content: form.content
-      }
+			body: {
+				page_id: pageDetail.page_id,
+				content: form.content,
+				color: (Math.random() * 360).toFixed(2),
+			},
 		};
 
 		const response = await HttpRequest(requestObj);

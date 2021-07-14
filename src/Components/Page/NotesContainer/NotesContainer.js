@@ -3,7 +3,7 @@ import { useState } from "react";
 const NotesContainer = ({ notes = [], pageDetail }) => {
 
 	const [scrollType, setScrollType] = useState('overflowY-hidden');
-
+  
 	return (
 		<div className='d-flex flex-column'>
 			<p>
@@ -14,7 +14,7 @@ const NotesContainer = ({ notes = [], pageDetail }) => {
 					<div
 						className='note-card'
 						style={{
-							backgroundColor: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
+							backgroundColor: `hsl(${item.color}, 50%, 50%)`,
 						}}
 					>
 						<p>{item.content}</p>
