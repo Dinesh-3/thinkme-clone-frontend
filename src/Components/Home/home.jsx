@@ -22,8 +22,8 @@ function Home() {
 				message: 'Page Name at least have 4 character',
 			},
 			pageId: {
-				pattern: /^[0-9a-zA-Z]{4}/,
-				message: 'Page Id must be between 4 to 14 character long',
+				pattern: /^[0-9A-Za-z]{4,}$/,
+				message: 'Min 4 character, Empty space and Special character not allowed',
 			},
 		}),
 		[]
