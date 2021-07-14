@@ -37,14 +37,9 @@ const Page = () => {
 
 	useEffect(() => {
 		const pageId = location.pathname.split('/')[2];
-		console.log({ pageId });
 		if (pageId) getPageDetail(pageId);
 		else history.push('/');
 	}, []);
-
-	useEffect(() => {
-		console.log({ notes });
-	}, [notes]);
 
 	const getPageDetail = async (pageId) => {
 		const requestObj = {
@@ -53,7 +48,6 @@ const Page = () => {
 		};
 
 		const response = await HttpRequest(requestObj);
-		console.log({ response });
 		if (response.data) {
 			setPageDetail(response.data);
 			setNotes(response.data?.notes || []);
@@ -64,7 +58,6 @@ const Page = () => {
 	};
 
 	const handleCopyClipboard = async () => {
-		console.log(window.location.href);
 		const url = window.location.href;
 		await navigator.clipboard.writeText(url);
 		alert('Link Copied');

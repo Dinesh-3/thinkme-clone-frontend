@@ -29,11 +29,7 @@ function Home() {
 		[]
 	);
 
-  useEffect(() => {
-    console.log({form, error});
-  }, [form, error])
 	const handleChange = ({ key, value }) => {
-		console.log({ key, value });
 		setForm((prev) => ({ ...prev, [key]: value }));
 		if (formPattern[key].pattern.test(value)) setError((prev) => ({ ...prev, [key]: false }));
 		else setError((prev) => ({ ...prev, [key]: formPattern[key].message }));
@@ -61,7 +57,6 @@ function Home() {
 		};
 
     const createPageResponse = await HttpRequest(createPage);
-    console.log({ createPageResponse });
     setForm({ pageName: '', pageId: '' });
     if(createPageResponse["status"] === true) return history.push({
 			pathname: '/page',

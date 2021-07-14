@@ -11,13 +11,11 @@ function Creation() {
   const [pageDetail, setPageDetail] = useState({pageId: "", pageName: ""});
 
   useEffect(() => {
-    console.log(location.state);
     if(location.state) setPageDetail(location.state);
     else history.push("/")
   },[])
 
   const handleCopyClipboard = async () => {
-    console.log(window.location.href);
     const url = `${window.location.href}/${pageDetail.pageId}`;
     await navigator.clipboard.writeText(url);
     alert("Link Copied")
