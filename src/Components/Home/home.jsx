@@ -85,10 +85,15 @@ function Home() {
 				</div>
 				<div className='row'>
 					<div className='gratitude pt-4 col-5 '>
-						<h1 style={{ fontWeight: 'bold', fontSize: '35px' }}>Let's celebrate </h1>
-						<h1 style={{ color: 'blue', display: 'inline', fontSize: '35px', fontWeight: 'bold' }}>
-							gratitude.
+						<h1 style={{ fontWeight: 'bold', fontSize: '35px' }}>
+							Let's celebrate{' '}
+							<h1
+								style={{ color: 'blue', display: 'inline', fontSize: '35px', fontWeight: 'bold' }}
+							>
+								gratitude.
+							</h1>
 						</h1>
+
 						<h1 style={{ fontWeight: 'bold', fontSize: '35px' }}>Let the humanity win.</h1>
 						<p style={{ color: '#9c9a95', fontWeight: '550', fontSize: '18px' }}>
 							We know that a lot of people have helped each other during these hard times. Create a
