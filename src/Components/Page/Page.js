@@ -14,13 +14,13 @@ const Page = () => {
 	const history = useHistory();
 	const [pageDetail, setPageDetail] = useState({ page_id: '', page_title: '' });
 	const [notes, setNotes] = useState([
-		{
-			note_id: 0,
-			page_id: '',
-			content: '',
-			created_at: '',
-			updated_at: '',
-		},
+		// {
+		// 	note_id: 0,
+		// 	page_id: '',
+		// 	content: '',
+		// 	created_at: '',
+		// 	updated_at: '',
+		// },
 	]);
 	const [form, setForm] = useState({ content: '' });
 	const [error, setError] = useState({ content: '' });
