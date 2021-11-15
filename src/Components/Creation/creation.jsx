@@ -87,7 +87,7 @@ function Creation() {
 					>
 						<form>
 							<div className='form-group' style={{ paddingTop: '30px' }}>
-								<img class="center" style={{display:"block",marginLeft:"auto",marginRight:"auto"}} src={done} />
+								<img className="center" style={{display:"block",marginLeft:"auto",marginRight:"auto"}} src={done} />
 
                                 <p className="col-12 " style={{textAlign:"center"}}>Amazing! You just created a kindness page.</p>
                                 <p className="col-12" style={{textAlign:"center"}}>Now go ahead and share it with your friends on Instagram, Facebook and literally everywhere!</p>
@@ -108,7 +108,7 @@ function Creation() {
                               </div>
 							</div>
                             <div style={{ paddingBottom: '50px',paddingLeft:"80px", cursor: "pointer", color: "blue"}} onClick={() => handleCopyClipboard()}>
-                              <span class="material-icons" style={{color:"#0057DA"}}>
+                              <span className="material-icons" style={{color:"#0057DA"}}>
                                 content_copy
                               </span>
                             COPY LINK

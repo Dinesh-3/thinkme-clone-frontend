@@ -9,9 +9,7 @@ import './Page.css';
 import NotesContainer from './NotesContainer/NotesContainer';
 import { isValidForm } from '../../utils/IsValidForm';
 
-const Page = () => {
-	const location = useLocation();
-	const history = useHistory();
+const Page = ({match, history}) => {
 	const [pageDetail, setPageDetail] = useState({ page_id: '', page_title: '' });
 	const [notes, setNotes] = useState([
 		// {
@@ -36,7 +34,7 @@ const Page = () => {
 	);
 
 	useEffect(() => {
-		const pageId = location.pathname.split('/')[2];
+		const pageId = match.params.id;
 		if (pageId) getPageDetail(pageId);
 		else history.push('/');
 	}, []);
