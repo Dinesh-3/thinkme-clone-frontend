@@ -59,7 +59,7 @@ function Home() {
     const createPageResponse = await HttpRequest(createPage);
     setForm({ pageName: '', pageId: '' });
     if(createPageResponse["status"] === true) return history.push({
-			pathname: '/page',
+			pathname: '/create',
 			state: {
 				...form,
 			},
@@ -106,7 +106,7 @@ function Home() {
 						>
 							Proudly made in India with <span style={{ color: 'red' }}>♥</span>
 							<br />
-							By Ankit Dubey, Kartik Dhaduk, Harshit Vavaiya <br />
+							By Developers <br />
 							<a href='/'>Contact Us</a>
 						</p>
 					</div>

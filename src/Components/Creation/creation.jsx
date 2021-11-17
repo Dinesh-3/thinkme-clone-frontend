@@ -16,10 +16,11 @@ function Creation() {
   },[])
 
   const handleCopyClipboard = async () => {
-    const url = `${window.location.href}/${pageDetail.pageId}`;
-    await navigator.clipboard.writeText(url);
-    alert("Link Copied")
-  }
+    
+		const url = `${window.location.host}/page/${pageDetail.pageId}`; // ${window.location.href}
+		await navigator.clipboard.writeText(url);
+		alert("Link Copied");
+	}
 
 	return (
 		<div style={{ background: '100% #F4FFF5' }}>
@@ -59,7 +60,7 @@ function Creation() {
 						>
 							Proudly made in India with <span style={{ color: 'red' }}>♥</span>
 							<br />
-							By Ankit Dubey, Kartik Dhaduk, Harshit Vavaiya <br />
+							By Developers <br />
 							<a href='/'>Contact Us</a>
 						</p>
 					</div>

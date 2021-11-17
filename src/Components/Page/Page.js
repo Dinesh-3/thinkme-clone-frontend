@@ -4,12 +4,13 @@ import prof1 from '../../Images/prof1.png';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useEffect, useMemo, useState } from 'react';
 import { HttpRequest } from '../../utils/HttpRequest';
+import { capitalize } from 'lodash';
 
 import './Page.css';
 import NotesContainer from './NotesContainer/NotesContainer';
 import { isValidForm } from '../../utils/IsValidForm';
 
-const Page = ({match, history}) => {
+const Page = ({ match, history }) => {
 	const [pageDetail, setPageDetail] = useState({ page_id: '', page_title: '' });
 	const [notes, setNotes] = useState([
 		// {
@@ -49,6 +50,7 @@ const Page = ({match, history}) => {
 		if (response.data) {
 			setPageDetail(response.data);
 			setNotes(response.data?.notes || []);
+			document.title = capitalize(pageId);
 			return true;
 		}
 
@@ -67,8 +69,8 @@ const Page = ({match, history}) => {
 		else setError((prev) => ({ ...prev, [key]: formPattern[key].message }));
 	};
 
-  const handleAddComment = async (event) => {
-    event.preventDefault();
+	const handleAddComment = async (event) => {
+		event.preventDefault();
 		if (!isValidForm(error)) return;
 		const requestObj = {
 			path: `/note`,
@@ -81,12 +83,11 @@ const Page = ({match, history}) => {
 		};
 
 		const response = await HttpRequest(requestObj);
-  
-    if(response.status === true) setNotes(prev => ([...prev, response.data]));
 
-    setForm({ content: '' });
+		if (response.status === true) setNotes((prev) => [...prev, response.data]);
 
-  }
+		setForm({ content: '' });
+	};
 
 	return (
 		<div className='page-container'>
@@ -131,12 +132,12 @@ const Page = ({match, history}) => {
 						type='submit'
 						className='btn btn-primary'
 						style={{ padding: '0.5rem 1rem', borderRadius: '10px', width: '100%' }}
-            onClick={handleAddComment}
+						onClick={handleAddComment}
 					>
 						SUBMIT
 					</button>
 				</div>
-				<form style={{ backgroundColor: '#F5FCFF', padding: '1rem', marginTop: "1rem" }}>
+				<form style={{ backgroundColor: '#F5FCFF', padding: '1rem', marginTop: '1rem' }}>
 					<div className='own'>
 						<h5 className=''>🎉 Create your own page</h5>
 
@@ -160,14 +161,14 @@ const Page = ({match, history}) => {
 			</div>
 			<div className='notes-container'>
 				{notes.length === 0 && (
-					<div className='thank' style={{height: "100vh", width: "100%", margin: "auto"}}>
+					<div className='thank' style={{ height: '100vh', width: '100%', margin: 'auto' }}>
 						<h5 className='' style={{ color: '#AA9393' }}>
 							Be the first one to thank {pageDetail.page_title}
 						</h5>
 						<img src={thanks} alt='' />
 					</div>
 				)}
-				{notes[0] && <NotesContainer notes={notes} pageDetail={pageDetail}/>}
+				{notes[0] && <NotesContainer notes={notes} pageDetail={pageDetail} />}
 			</div>
 		</div>
 	);
